@@ -1,6 +1,6 @@
 import { db } from "../_lib/prisma";
 import { DataTable } from "../_components/ui/data-table";
-import { transactionsColumns } from "./_columns";
+import { transactionColumns } from "./_columns";
 import AddTransactionButton from "../_components/add-transaction-button";
 
 const TransactionsPage = async () => {
@@ -13,7 +13,7 @@ const TransactionsPage = async () => {
         <h1 className="text-2xl font-bold">Transações</h1>
         <AddTransactionButton />
       </div>
-      <DataTable columns={transactionsColumns} data={transactions} />
+      <DataTable columns={transactionColumns} data={transactions} />
     </div>
   );
 };
