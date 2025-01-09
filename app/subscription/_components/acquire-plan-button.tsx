@@ -11,11 +11,11 @@ const AcquirePlanButton = () => {
 
   const handleAcquirePlanClick = async () => {
     const { sessionId } = await createStripeCheckout();
-    if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+    if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
       throw new Error("Clerk publishable key is not set");
     }
     const stripe = await loadStripe(
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     );
     if (!stripe) {
       throw new Error("Stripe is not loaded");
@@ -29,7 +29,7 @@ const AcquirePlanButton = () => {
     return (
       <Button className="w-full rounded-full font-bold" variant="link">
         <Link
-          href={`${process.env.NEXT_PUBLIC_STRIPE_COSTUMER_PORTAL_URL as string}?prefilled_email=${user?.emailAddresses[0].emailAddress}`}
+          href={`${process.env.NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_URL as string}?prefilled_email=${user?.emailAddresses[0].emailAddress}`}
         >
           Gerenciar Plano
         </Link>
