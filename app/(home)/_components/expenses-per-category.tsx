@@ -18,8 +18,8 @@ const ExpensesPerCategory = ({
       </CardHeader>
 
       <CardContent className="space-y-6">
-        {expensesPerCategory.map((category) => (
-          <div key={category.category} className="space-y-2">
+        {expensesPerCategory.map((category, index) => (
+          <div key={`${category.category}-${index}`} className="space-y-2">
             <div className="flex w-full justify-between">
               <p className="text-sm font-bold">
                 {TRANSACTION_CATEGORY_LABELS[category.category]}
