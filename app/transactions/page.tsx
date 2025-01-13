@@ -29,14 +29,21 @@ const TransactionsPage = async () => {
       <div className="flex flex-col space-y-6 p-6">
         {/* TÍTULO E BOTÃO */}
         <div className="flex w-full items-center justify-between">
-          <h1 className="text-2xl font-bold">Tr ansações</h1>
+          <h1 className="text-2xl font-bold">Transações</h1>
           <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
         </div>
         <ScrollArea className="h-full">
-          <DataTable
-            columns={transactionColumns}
-            data={JSON.parse(JSON.stringify(transactions))}
-          />
+          {/* TABELA */}
+          {transactions.length > 0 ? (
+            <DataTable
+              columns={transactionColumns}
+              data={JSON.parse(JSON.stringify(transactions))}
+            />
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center">
+              <p>Você ainda não realizou nenhuma transação.</p>
+            </div>
+          )}
         </ScrollArea>
       </div>
     </>
